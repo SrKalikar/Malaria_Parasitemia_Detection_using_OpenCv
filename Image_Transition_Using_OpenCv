@@ -1,0 +1,25 @@
+#Loading data in an IDE 
+import glob
+import os
+dataset = os.path.join('path_of_the_dataset')
+infected = os.path.join('dataset',infected)
+healthy = os.path.join('dataset', healthy)
+infected_files = glob.glob(infected + '/*png')
+healthy_files = glob.glob(infected + '/*png')
+len(healthy_files), len(infected_files)
+
+
+#output
+#this will contain the length of files in the dataset folder. 
+#we can design any other names to varibales , but for malaria dataset i have taken these names , names of folders from main dataset folder. 
+
+#2
+
+import pandas as pd
+import numpy as np
+files = pd.DataFrame({
+                      'filename':infected_file + healthy_file,
+                      'label':['malaria'] * len(infected_file) + ['healthy'] * len(healthy_files)
+}).sample(frac=1, random_state=42).reset_index(drop=True)
+
+files_df.head()
